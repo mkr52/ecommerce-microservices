@@ -38,11 +38,11 @@ public class UserService {
 //        return users;
     }
 
-    public Optional<UserResponse> fetchUser(Long id) {
+    public Optional<UserResponse> fetchUser(String id) {
         return userRepository.findById(id).map(this::mapToUserResponse);
     }
 
-    public boolean editUser(Long id, UserRequest updatedUserRequest) {
+    public boolean editUser(String id, UserRequest updatedUserRequest) {
 //        return users.stream()
 //                .filter(u -> u.getId().equals(id))
 //                        .findFirst()

@@ -1,16 +1,21 @@
 spring:
   application:
     name: user-service
-  jpa:
-    show-sql: true
-    hibernate:
-      ddl-auto: update
-    database: postgresql
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
-  datasource:
-    url: jdbc:postgresql://localhost:5432/userdb
-    username: ecommuser
-    password: ecommpass
+  data:
+    mongodb:
+#      uri: mongodb://localhost:27017/userdb
+      database: userdb
+      uri: mongodb+srv://mohitiskumar:H1asSeWQXzTUPZeS@user-data.1wbnhsg.mongodb.net/?retryWrites=true&w=majority&appName=user-data
+#  jpa:
+#    show-sql: true
+#    hibernate:
+#      ddl-auto: update
+#    database: postgresql
+#    database-platform: org.hibernate.dialect.PostgreSQLDialect
+#  datasource:
+#    url: jdbc:postgresql://localhost:5432/userdb
+#    username: ecommuser
+#    password: ecommpass
 #  h2:
 #    console:
 #      enabled: true
@@ -23,3 +28,5 @@ spring:
 
 server:
   port: 8082
+
+#  mohitiskumar/H1asSeWQXzTUPZeS
