@@ -61,6 +61,11 @@ public class ProductService {
                 .collect(Collectors.toList());
     }
 
+    public Optional<ProductResponse> getProductById(String id) {
+        return productRepository.findByIdAndActiveTrue(Long.valueOf(id))
+                .map(this::mapToProductResponse);
+    }
+
     public boolean deleteProduct(Long id) {
         return productRepository.findById(id)
                 .map(product -> {

@@ -1,10 +1,13 @@
 package com.mkr.ecom.order.services;
 
+import com.mkr.ecom.order.clients.ProductServiceClient;
 import com.mkr.ecom.order.dto.CartItemRequest;
+import com.mkr.ecom.order.dto.ProductResponse;
 import com.mkr.ecom.order.models.CartItem;
 import com.mkr.ecom.order.repository.CartItemRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -12,12 +15,13 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 @Transactional
 public class CartService {
 
 //    private final ProductRepository productRepository;
     private final CartItemRepository cartItemRepository;
+    private final ProductServiceClient productServiceClient;
 //    private final UserRepository userRepository;
 
     public boolean addToCart(String userId, CartItemRequest request) {
@@ -26,6 +30,9 @@ public class CartService {
 //        if(productOpt.isEmpty()) {
 //            return false;
 //        }
+        ProductResponse productResponse = productServiceClient.getProductDetails(request.getProductId());
+        if (productResponse == null || productResponse.getStockQuantity() < request.getQuantity())
+            return false;
 
 //        Product product = productOpt.get();
 //        if (product.getStockQuantity() < request.getQuantity()) {
