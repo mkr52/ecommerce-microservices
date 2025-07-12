@@ -1,13 +1,20 @@
 spring:
-  application:
-    name: user-service
-  config:
-    import: optional:configserver:http://localhost:8888
-#  data:
-#    mongodb:
-##      uri: mongodb://localhost:27017/userdb
-#      database: userdb
-#      uri: mongodb+srv://mohitiskumar:H1asSeWQXzTUPZeS@user-data.1wbnhsg.mongodb.net/?retryWrites=true&w=majority&appName=user-data
+  data:
+    mongodb:
+#      uri: mongodb://localhost:27017/userdb
+      database: userdb
+      uri: mongodb+srv://mohitiskumar:${DB_PASSWORD}@user-data.1wbnhsg.mongodb.net/?retryWrites=true&w=majority&appName=user-data
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
 #  jpa:
 #    show-sql: true
 #    hibernate:
@@ -28,8 +35,8 @@ spring:
 #    hibernate:
 #      ddl-auto: create
 
-#server:
-#  port: 8082
+server:
+  port: 8082
 
 logging:
   level:

@@ -1,16 +1,18 @@
 spring:
   application:
     name: product-service
-  jpa:
-    show-sql: true
-    hibernate:
-      ddl-auto: update
-    database: postgresql
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
-  datasource:
-    url: jdbc:postgresql://localhost:5432/productdb
-    username: ecommuser
-    password: ecommpass
+  config:
+    import: optional:configserver:http://localhost:8888
+#  jpa:
+#    show-sql: true
+#    hibernate:
+#      ddl-auto: update
+#    database: postgresql
+#    database-platform: org.hibernate.dialect.PostgreSQLDialect
+#  datasource:
+#    url: jdbc:postgresql://localhost:5432/productdb
+#    username: ecommuser
+#    password: ecommpass
 #  jpa:
 #    show-sql: true
 #    hibernate:
