@@ -10,6 +10,9 @@
         <option value="$PROJECT_DIR$/order/pom.xml" />
         <option value="$PROJECT_DIR$/ecomm-application/pom.xml" />
         <option value="$PROJECT_DIR$/configserver/pom.xml" />
+        <option value="$PROJECT_DIR$/additional/interservice/consumer/pom.xml" />
+        <option value="$PROJECT_DIR$/additional/interservice/provider/pom.xml" />
+        <option value="$PROJECT_DIR$/additional/interservice/eureka/pom.xml" />
       </list>
     </option>
   </component>
