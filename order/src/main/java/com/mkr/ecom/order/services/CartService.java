@@ -1,8 +1,10 @@
 package com.mkr.ecom.order.services;
 
 import com.mkr.ecom.order.clients.ProductServiceClient;
+import com.mkr.ecom.order.clients.UserServiceClient;
 import com.mkr.ecom.order.dto.CartItemRequest;
 import com.mkr.ecom.order.dto.ProductResponse;
+import com.mkr.ecom.order.dto.UserResponse;
 import com.mkr.ecom.order.models.CartItem;
 import com.mkr.ecom.order.repository.CartItemRepository;
 import jakarta.transaction.Transactional;
@@ -22,6 +24,7 @@ public class CartService {
 //    private final ProductRepository productRepository;
     private final CartItemRepository cartItemRepository;
     private final ProductServiceClient productServiceClient;
+    private final UserServiceClient userServiceClient;
 //    private final UserRepository userRepository;
 
     public boolean addToCart(String userId, CartItemRequest request) {
@@ -32,6 +35,10 @@ public class CartService {
 //        }
         ProductResponse productResponse = productServiceClient.getProductDetails(request.getProductId());
         if (productResponse == null || productResponse.getStockQuantity() < request.getQuantity())
+            return false;
+
+        UserResponse userResponse = userServiceClient.getUserDetails(userId);
+        if (userResponse == null)
             return false;
 
 //        Product product = productOpt.get();
