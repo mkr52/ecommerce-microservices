@@ -15,6 +15,7 @@
         <option value="$PROJECT_DIR$/additional/interservice/eureka/pom.xml" />
         <option value="$PROJECT_DIR$/ecomeureka/pom.xml" />
         <option value="$PROJECT_DIR$/gateway/pom.xml" />
+        <option value="$PROJECT_DIR$/additional/spring-sec/pom.xml" />
       </list>
     </option>
   </component>
