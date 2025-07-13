@@ -15,7 +15,12 @@ public class SecurityConfig {
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                .authorizeHttpRequests((req) -> req.anyRequest().authenticated())
+                .authorizeHttpRequests((req) ->
+                        req
+                                .requestMatchers("/contact").permitAll()
+                                .requestMatchers("/admin").denyAll()
+                                .requestMatchers("/admin/**").denyAll()
+                                .anyRequest().authenticated())
                 .sessionManagement(session ->
                         session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 //                .formLogin(Customizer.withDefaults()) // comment to diable the form login
