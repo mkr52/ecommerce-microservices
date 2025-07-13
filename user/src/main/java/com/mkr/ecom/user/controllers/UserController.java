@@ -22,6 +22,7 @@ public class UserController {
 
     @GetMapping("/users")
     public ResponseEntity<List<UserResponse>> getUser() {
+        log.info("REQUEST RECEIVED");
         return new ResponseEntity<>(userService.fetchAllUsers(), HttpStatus.OK);
     }
 
